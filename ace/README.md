@@ -12,11 +12,11 @@ A Claude Code-native development team of specialized subagents that collaborate 
 
 | Agent | Role | Primary Outputs |
 |-------|------|-----------------|
-| **product-manager** | Discovery, requirements, prioritization | PRDs, user stories, GitHub Issues, roadmap |
-| **architect** | System design, technical decisions | ADRs, design docs, API contracts, threat models |
+| **maintainer** | Community health, issue triage, contributor experience | Issues, CONTRIBUTING.md, ROADMAP.md, SECURITY.md |
+| **architect** | System design, technical decisions, public API stability | ADRs, design docs, API contracts, threat models |
 | **developer** | Implementation, testing, code review | Pull requests, unit/integration tests |
-| **ux-designer** | Information architecture, UX flows, accessibility | UX specs, wireframe descriptions, a11y reviews |
-| **devops** | CI/CD, infrastructure, observability | GitHub Actions workflows, IaC, runbooks |
+| **tech-writer** | Documentation, API reference, changelogs | README, guides, CHANGELOG, release notes, docstrings |
+| **devops** | CI/CD, release automation, dependency hygiene | GitHub Actions workflows, release pipeline, Dependabot config |
 
 ## How It Works
 
@@ -56,16 +56,17 @@ A Claude Code-native development team of specialized subagents that collaborate 
 │       └── distributed-systems.md         # Idempotency, retries, sagas, consistency
 ├── .claude/
 │   ├── agents/                            # Subagent definitions
-│   │   ├── product-manager.md
+│   │   ├── maintainer.md
 │   │   ├── architect.md
 │   │   ├── developer.md
-│   │   ├── ux-designer.md
+│   │   ├── tech-writer.md
 │   │   └── devops.md
 │   └── skills/                            # Cross-cutting skills
 │       ├── github-issues/SKILL.md
 │       ├── adr-authoring/SKILL.md
 │       ├── pr-workflow/SKILL.md
-│       └── ci-pipeline/SKILL.md
+│       ├── ci-pipeline/SKILL.md
+│       └── release-engineering/SKILL.md
 └── .github/
     └── workflows/
         └── ci.yml                         # Reference CI workflow
@@ -76,15 +77,16 @@ A Claude Code-native development team of specialized subagents that collaborate 
 1. **Drop this folder into the root of your repo** (or copy `.claude/`, `kb/`, and `.github/` into your existing repo).
 2. **Open Claude Code** in that repo.
 3. **Tell it what you want.** Examples:
-   - `Have the product-manager draft a PRD for an account statement export feature.`
-   - `Architect, propose an approach for idempotent ACH retry handling.`
+   - `Maintainer, triage the three open issues and label any good first issues.`
+   - `Architect, propose an approach for idempotent retry handling and note the semver implications.`
    - `Developer, implement issue #42 and open a PR.`
-   - `DevOps, add a CodeQL scan to the CI workflow.`
-   - `UX designer, review the user flow for the wire transfer screen.`
+   - `Tech writer, update the README and write a getting-started guide for the new CLI.`
+   - `DevOps, add a multi-OS CI matrix and a release workflow that publishes to PyPI.`
 
 ## Customizing for Your Project
 
 - **Update `kb/01-tech-stack.md`** with your actual languages, frameworks, and services.
-- **Update `kb/02-github-conventions.md`** with your org's branch naming, labels, and templates.
-- **Tune agent prompts** in `.claude/agents/*.md` if your team has specific role boundaries.
-- **Add domain skills** under `.claude/skills/` for anything specific (e.g., a `database-migration` skill).
+- **Update `kb/02-github-conventions.md`** with your branch naming, labels, and templates.
+- **Tune agent prompts** in `.claude/agents/*.md` if your project has specific role boundaries.
+- **Add domain skills** under `.claude/skills/` for anything project-specific (e.g., a `database-migration` skill).
+- **Set your registry** in `release-engineering/SKILL.md` — the skill covers PyPI, npm, crates.io, and Go modules; delete the sections that don't apply.

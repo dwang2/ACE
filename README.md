@@ -12,11 +12,11 @@ A Claude Code-native development team of specialized subagents that collaborate 
 
 | Agent | Role | Primary Outputs |
 |-------|------|-----------------|
-| **product-manager** | Discovery, requirements, prioritization | PRDs, user stories, GitHub Issues, roadmap |
-| **architect** | System design, technical decisions | ADRs, design docs, API contracts, threat models |
+| **maintainer** | Community health, issue triage, contributor experience | Issues, CONTRIBUTING.md, ROADMAP.md, SECURITY.md |
+| **architect** | System design, technical decisions, public API stability | ADRs, design docs, API contracts, threat models |
 | **developer** | Implementation, testing, code review | Pull requests, unit/integration tests |
-| **ux-designer** | Information architecture, UX flows, accessibility | UX specs, wireframe descriptions, a11y reviews |
-| **devops** | CI/CD, infrastructure, observability | GitHub Actions workflows, IaC, runbooks |
+| **tech-writer** | Documentation, API reference, changelogs | README, guides, CHANGELOG, release notes, docstrings |
+| **devops** | CI/CD, release automation, dependency hygiene | GitHub Actions workflows, release pipeline, Dependabot config |
 
 ## How It Works
 
