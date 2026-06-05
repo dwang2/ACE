@@ -1,5 +1,9 @@
 # ACE — Agentic Collaborative Engineering
 
+[![npm](https://img.shields.io/npm/v/ace-agents)](https://www.npmjs.com/package/ace-agents)
+[![node](https://img.shields.io/node/v/ace-agents)](https://www.npmjs.com/package/ace-agents)
+[![license](https://img.shields.io/npm/l/ace-agents)](LICENSE)
+
 A Claude Code-native development team of specialized subagents that collaborate on software delivery through GitHub. Designed to be **Pro-survivable** — token discipline is built into every agent and KB.
 
 **ACE** = **A**gentic **C**ollaborative **E**ngineering. The agents are the specialists; GitHub is the shared workspace; you are the orchestrator who decides what happens when.
@@ -56,16 +60,17 @@ A Claude Code-native development team of specialized subagents that collaborate 
 │       └── distributed-systems.md         # Idempotency, retries, sagas, consistency
 ├── .claude/
 │   ├── agents/                            # Subagent definitions
-│   │   ├── product-manager.md
+│   │   ├── maintainer.md
 │   │   ├── architect.md
 │   │   ├── developer.md
-│   │   ├── ux-designer.md
+│   │   ├── tech-writer.md
 │   │   └── devops.md
 │   └── skills/                            # Cross-cutting skills
 │       ├── github-issues/SKILL.md
 │       ├── adr-authoring/SKILL.md
 │       ├── pr-workflow/SKILL.md
-│       └── ci-pipeline/SKILL.md
+│       ├── ci-pipeline/SKILL.md
+│       └── release-engineering/SKILL.md
 └── .github/
     └── workflows/
         └── ci.yml                         # Reference CI workflow
