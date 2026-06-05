@@ -72,9 +72,30 @@ A Claude Code-native development team of specialized subagents that collaborate 
         └── ci.yml                         # Reference CI workflow
 ```
 
+## Install
+
+```bash
+# Zero-install — always pulls the latest version
+npx ace-agents@latest init
+
+# Or install globally once
+npm install -g ace-agents
+ace init
+```
+
+Run inside any project directory. ACE copies `.claude/`, `kb/`, and `.github/workflows/ci.yml` into the current directory.
+
+```bash
+ace init --no-ci        # skip the CI workflow
+ace init --force        # overwrite existing files
+ace update              # re-sync after upgrading; skips locally modified files
+ace update --force      # overwrite everything
+ace --version
+```
+
 ## Quick Start
 
-1. **Drop this folder into the root of your repo** (or copy `.claude/`, `kb/`, and `.github/` into your existing repo).
+1. **Run `npx ace-agents@latest init`** in your project root.
 2. **Open Claude Code** in that repo.
 3. **Tell it what you want.** Examples:
    - `Maintainer, triage the three open issues and label any good first issues.`

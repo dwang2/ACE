@@ -1,0 +1,14 @@
+{
+  "name": "ace-agents",
+  "version": "0.1.0",
+  "description": "ACE — Agentic Collaborative Engineering: Claude Code agent team installer",
+  "type": "module",
+  "bin": { "ace": "./bin/ace.js" },
+  "files": ["bin", "lib", "ace"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test tests/installer.test.js"
+  },
+  "keywords": ["claude", "claude-code", "ai", "agents", "agentic"],
+  "license": "MIT"
+}

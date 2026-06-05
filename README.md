@@ -71,16 +71,49 @@ A Claude Code-native development team of specialized subagents that collaborate 
         └── ci.yml                         # Reference CI workflow
 ```
 
+## Install
+
+```bash
+# Zero-install — always pulls the latest version
+npx ace-agents@latest init
+
+# Or install globally once
+npm install -g ace-agents
+ace init
+```
+
+Run inside any project directory. ACE copies `.claude/`, `kb/`, and `.github/workflows/ci.yml` into the current directory and prints what it did.
+
+```bash
+ace init --no-ci        # skip the CI workflow
+ace init --force        # overwrite existing files
+ace update              # re-sync after upgrading ace-agents; skips locally modified files
+ace update --force      # overwrite everything including locally modified files
+ace --version
+```
+
+<details>
+<summary>Manual install (no Node.js required)</summary>
+
+Clone the repo and copy the three directories into your project root:
+
+```bash
+git clone --depth 1 https://github.com/dwang2/ACE /tmp/ace
+cp -r /tmp/ace/ace/.claude /tmp/ace/ace/kb /tmp/ace/ace/.github YOUR_PROJECT/
+```
+
+</details>
+
 ## Quick Start
 
-1. **Drop this folder into the root of your repo** (or copy `.claude/`, `kb/`, and `.github/` into your existing repo).
+1. **Run `npx ace-agents@latest init`** in your project root.
 2. **Open Claude Code** in that repo.
 3. **Tell it what you want.** Examples:
-   - `Have the product-manager draft a PRD for an account statement export feature.`
-   - `Architect, propose an approach for idempotent ACH retry handling.`
+   - `Maintainer, triage the three open issues and label any good first issues.`
+   - `Architect, propose an approach for idempotent retry handling and note the semver implications.`
    - `Developer, implement issue #42 and open a PR.`
-   - `DevOps, add a CodeQL scan to the CI workflow.`
-   - `UX designer, review the user flow for the wire transfer screen.`
+   - `Tech writer, update the README and write a getting-started guide for the new CLI.`
+   - `DevOps, add a multi-OS CI matrix and a release workflow that publishes to PyPI.`
 
 ## Customizing for Your Project
 
