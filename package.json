@@ -3,12 +3,31 @@
   "version": "0.1.0",
   "description": "ACE — Agentic Collaborative Engineering: Claude Code agent team installer",
   "type": "module",
-  "bin": { "ace": "./bin/ace.js" },
-  "files": ["bin", "lib", "ace"],
-  "engines": { "node": ">=18" },
+  "bin": {
+    "ace": "bin/ace.js"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "ace"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "test": "node --test tests/installer.test.js"
   },
-  "keywords": ["claude", "claude-code", "ai", "agents", "agentic"],
-  "license": "MIT"
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "agents",
+    "agentic"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwang2/ACE.git"
+  },
+  "homepage": "https://github.com/dwang2/ACE#readme"
 }
