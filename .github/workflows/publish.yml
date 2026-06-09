@@ -47,12 +47,17 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Commit and tag
-        run: |
-          git add package.json
-          git commit -m "chore: release v${{ steps.bump.outputs.version }}"
-          git tag "v${{ steps.bump.outputs.version }}"
-          git push origin HEAD:main --tags
+          - name: Commit and tag
+          env:
+            # This securely passes the automatically generated GitHub token to your git command
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            git add package.json
+            git commit -m "chore: release v${{ steps.bump.outputs.version }}"
+            git tag "v${{ steps.bump.outputs.version }}"
+            
+            # Explicitly point to the repository URL using the token for authentication
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main --tags
 
       - name: Publish
         run: npm publish --access public --provenance
