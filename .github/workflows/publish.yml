@@ -19,14 +19,10 @@ jobs:
       contents: write   # push version bump commit + tag
       id-token: write   # npm provenance attestation
     steps:
-      # 1. Updated from @v4 to @v6 to support the Node 24 runner
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      # 2. Updated from @v4 to @v6 to support the Node 24 runner
-      # Note: 'node-version' controls the Node version used to run YOUR app/tests,
-      # which is perfectly fine to leave as '20' if that's your project's target.
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
@@ -35,17 +31,22 @@ jobs:
       - name: Run tests
         run: node --test tests/installer.test.js
 
-      - name: Configure git
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Bump version
         id: bump
         run: |
           npm version ${{ inputs.bump }} --no-git-tag-version
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Publish
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit and tag
         env:
@@ -55,11 +56,6 @@ jobs:
           git commit -m "chore: release v${{ steps.bump.outputs.version }}"
           git tag "v${{ steps.bump.outputs.version }}"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main --tags
-
-      - name: Publish
-        run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         env:
