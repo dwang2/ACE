@@ -75,12 +75,7 @@ A Claude Code-native development team of specialized subagents that collaborate 
 ## Install
 
 ```bash
-# Zero-install — always pulls the latest version
 npx ace-agents@latest init
-
-# Or install globally once
-npm install -g ace-agents
-ace init
 ```
 
 Run inside any project directory. ACE copies `.claude/`, `kb/`, and `.github/workflows/ci.yml` into the current directory.
@@ -103,6 +98,87 @@ ace --version
    - `Developer, implement issue #42 and open a PR.`
    - `Tech writer, update the README and write a getting-started guide for the new CLI.`
    - `DevOps, add a multi-OS CI matrix and a release workflow that publishes to PyPI.`
+
+## Example Workflows
+
+### Calling an agent explicitly
+
+Address the agent by role and give it enough context to act:
+
+```
+Architect, we need to add rate limiting to the public API. Propose an approach,
+note the semver implications, and write an ADR if you decide on an approach.
+```
+
+```
+Developer, implement issue #34. Write tests, open a PR, and request my review.
+```
+
+```
+DevOps, our test suite takes 8 minutes. Add parallelism and caching to the CI
+workflow to get it under 3 minutes.
+```
+
+### Letting Claude Code route automatically
+
+You don't have to name an agent. Describe the task and Claude Code picks the right
+one based on each agent's `description` field:
+
+```
+Triage the open issues, label any good first issues, and close anything that's
+clearly a duplicate.
+```
+→ routes to **maintainer** (issue triage matches its description)
+
+```
+The auth middleware is storing session tokens insecurely. Review the threat surface
+and recommend fixes.
+```
+→ routes to **architect** (threat model / security review)
+
+### Multi-agent handoff
+
+Design-then-implement is the most common multi-agent flow. Run `/compact` between
+phases to keep context clean:
+
+```
+[design] Architect, design the pagination strategy for the search API. Produce an
+ADR with your recommendation.
+```
+*(review and approve the ADR)*
+```
+/compact
+```
+```
+Developer, implement the cursor-based pagination from ADR-005. Write integration
+tests and open a PR.
+```
+
+### Lite mode for small tasks
+
+Skip KB loading for tasks that don't need it — saves tokens and runs faster:
+
+```
+[lite] Rename UserService to AccountService everywhere.
+```
+
+```
+[lite] Add a docstring to the parse_config function.
+```
+
+```
+[lite] Fix the typo in the error message on line 42 of auth.py.
+```
+
+### Hotfix mode
+
+For production-urgent changes, `[hotfix]` tells the agent to skip design overhead
+and load only the minimum:
+
+```
+[hotfix] Developer, fix the null pointer crash in /api/orders reported in #89.
+Patch, test, and open a PR against main.
+```
 
 ## Customizing for Your Project
 
