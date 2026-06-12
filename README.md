@@ -79,12 +79,7 @@ A Claude Code-native development team of specialized subagents that collaborate 
 ## Install
 
 ```bash
-# Zero-install — always pulls the latest version
 npx ace-agents@latest init
-
-# Or install globally once
-npm install -g ace-agents
-ace init
 ```
 
 Run inside any project directory. ACE copies `.claude/`, `kb/`, and `.github/workflows/ci.yml` into the current directory and prints what it did.
