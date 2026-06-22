@@ -32,6 +32,9 @@ A Claude Code-native development team of specialized subagents that collaborate 
 
 ## Directory Layout
 
+<details>
+<summary>Show directory layout</summary>
+
 ```
 .
 ├── README.md                              # This file
@@ -75,6 +78,8 @@ A Claude Code-native development team of specialized subagents that collaborate 
     └── workflows/
         └── ci.yml                         # Reference CI workflow
 ```
+
+</details>
 
 ## Install
 
