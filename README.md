@@ -85,11 +85,11 @@ npx ace-agents@latest init
 Run inside any project directory. ACE copies `.claude/`, `kb/`, and `.github/workflows/ci.yml` into the current directory and prints what it did.
 
 ```bash
-ace init --no-ci        # skip the CI workflow
-ace init --force        # overwrite existing files
-ace update              # re-sync after upgrading ace-agents; skips locally modified files
-ace update --force      # overwrite everything including locally modified files
-ace --version
+npx ace-agents@latest init --no-ci        # skip the CI workflow
+npx ace-agents@latest init --force        # overwrite existing files
+npx ace-agents@latest update              # re-sync after upgrading ace-agents; skips locally modified files
+npx ace-agents@latest update --force      # overwrite everything including locally modified files
+npx ace-agents@latest --version
 ```
 
 <details>
