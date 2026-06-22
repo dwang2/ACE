@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-22
+
+### Added
+- `ace init` and `ace update` now merge `.claude/settings.json` into the project additively, installing a Stop hook that prints `claude --resume <session-id>` after each Claude Code session. Existing project settings and hooks are preserved.
+
 ## [0.1.8] - 2026-06-22
 
 ### Fixed
