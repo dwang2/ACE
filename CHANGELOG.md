@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.7] - 2026-06-22
+
+### Changed
+- Directory layout section in README is now collapsed under a `<details>` toggle
+
 ## [0.1.6] - 2026-06-22
 
 ### Added
