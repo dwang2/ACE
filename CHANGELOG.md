@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.8] - 2026-06-22
+
+### Fixed
+- `settings.local.json` is no longer included in the npm tarball or copied into user projects by `ace init`/`ace update`
+
 ## [0.1.7] - 2026-06-22
 
 ### Changed
