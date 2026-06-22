@@ -8,6 +8,24 @@ import { install, update } from '../lib/installer.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const VERSION = JSON.parse(readFileSync(join(__dirname, '..', 'package.json'), 'utf8')).version;
 
+const CYAN  = '\x1b[96m';
+const BOLD  = '\x1b[1m';
+const DIM   = '\x1b[2m';
+const RESET = '\x1b[0m';
+
+const BANNER = `
+${CYAN}${BOLD} █████╗   ██████╗ ███████╗
+██╔══██╗ ██╔════╝ ██╔════╝
+███████║ ██║      █████╗
+██╔══██║ ██║      ██╔══╝
+██║  ██║ ╚██████╗ ███████╗
+╚═╝  ╚═╝  ╚═════╝ ╚══════╝${RESET}
+
+${BOLD}  Agentic Collaborative Engineering${RESET}
+${DIM}  Claude Code-native multi-agent dev team · v${VERSION}${RESET}
+
+`;
+
 const HELP = `\
 ace-agents ${VERSION}
 
@@ -83,6 +101,8 @@ function runUpdate(args) {
   const results = update(dest, { force: values.force });
   printResults(results);
 }
+
+process.stdout.write(BANNER);
 
 const [cmd, ...rest] = process.argv.slice(2);
 
