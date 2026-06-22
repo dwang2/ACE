@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq '{systemMessage: (\"To resume: claude --resume \" + .session_id)}'"
+          }
+        ]
+      }
+    ]
+  }
+}
