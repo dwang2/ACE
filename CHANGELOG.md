@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.5] - 2026-06-22
+
+### Fixed
+- Root `README.md` CLI examples now use `npx ace-agents@latest` (was missed in v0.1.4 which only fixed `ace/README.md`)
+
 ## [0.1.4] - 2026-06-22
 
 ### Fixed
